@@ -19,12 +19,14 @@ function setLanguage(lang) {
 }
 
 function getLanguages() {
+	let resp = null;
 	let req = new XMLHttpRequest();
 	req.open("GET", "languages.json");
 	req.onload = function () {
-		return req.response;
+		resp = req.response;
 	}
 	req.send();
+	return resp;
 }
 
 for (const lang of getLanguages()) {
