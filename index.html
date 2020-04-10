@@ -19,17 +19,17 @@ function setLanguage(lang) {
 }
 
 function getLanguages() {
-	let resp = null;
 	let req = new XMLHttpRequest();
 	req.open("GET", "languages.json");
 	req.onload = function () {
-		resp = JSON.parse(req.response);
+		languages = JSON.parse(req.response);
 	}
 	req.send();
-	return resp;
 }
 
-for (const lang of getLanguages()) {
+var languages = null;
+getLanguages();
+for (const lang of languages) {
 	let btn = document.createElement("a");
 	btn.setAttribute("class","linkbutton");
 	btn.setAttribute("href","quiz.html");
