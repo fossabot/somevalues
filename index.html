@@ -2,7 +2,40 @@
 <html>
 	<head>
 		<title>The Political Hexadecaract</title>
+		<script src="main.js"></script>
 	</head>
 	<body>
+		<header>
+			
+		</header>
+		<main>
+			<h1>Select your language</h1>
+			<div id="lang-buttons">
+			</div>
+		</main>
+		<script>
+function setLanguage(lang) {
+	document.cookie = "lang=" + lang;
+}
+
+function getLanguages() {
+	let req = new XMLHttpRequest();
+	req.open("GET", "languages.json");
+	req.responseType = "json";
+	req.send();
+	req.onload = function () {
+		return req.response;
+	}
+}
+
+for (const lang of getLanguages()) {
+	let btn = document.createElement("a");
+	btn.setAttribute("class","linkbutton");
+	btn.setAttribute("href","quiz.html");
+	btn.setAttribute("onclick","setlanguage(" + lang.lid + ")");
+	btn.innerHTML = lang.name;
+	document.getElementById("lang-buttons").appendChild(btn);
+}
+		</script>
 	</body>
 </html>
