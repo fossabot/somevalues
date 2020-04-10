@@ -20,7 +20,7 @@ function setLanguage(lang) {
 
 function getLanguages() {
 	let req = new XMLHttpRequest();
-	req.open("GET", "languages.json");
+	req.open("GET", "languages.json", false);
 	req.onload = function () {
 		languages = JSON.parse(req.response);
 	}
