@@ -23,7 +23,7 @@ function getLanguages() {
 	let req = new XMLHttpRequest();
 	req.open("GET", "languages.json");
 	req.onload = function () {
-		resp = req.response;
+		resp = JSON.parse(req.response);
 	}
 	req.send();
 	return resp;
