@@ -9,9 +9,9 @@
 		"justicdesc":"placeholder",
 		"rehabi":"Rehabilitative",
 		"puniti":"Punitive",
-		"ethcendesc":"placeholder",
-		"cosmos":"Cosmopolitanism",
-		"nativi":"Nativism",
+		"ethnosdesc":"placeholder",
+		"ethcen":"Ethnocentrism",
+		"ethrel":"Ethnorelativism",
 		"autlibdesc":"placeholder",
 		"author":"Authority",
 		"libert":"Liberty",
@@ -50,6 +50,11 @@
 		"ecolog":"Ecology"
 	},
 	"questions":{
-		"1":""
-	}
+		"1":"placeholder"
+	},
+	"quiz":{
+		"header":"placeholder",
+		"preamble":"placeholder"
+	},
+	"title":"The Political Hexadecaract"
 }

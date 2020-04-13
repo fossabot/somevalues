@@ -7,7 +7,7 @@ There are 16 spectrums that cover a variety of different issues. These are:
 * Social progression (Progressivism-Conservatism)
 * Identity (Constructivism-Essentialism)
 * The role of justice (Rehabilitative-Punitive)
-* Ethnocentrism (Nativism-Cosmopolitanism)
+* Ethnocentrism (Ethnocentrism-Ethnorelativism)
 * Libertarianism (Authority-Liberty)
 * Internationalism (Multilateralism-Unilateralism)
 * Foreign intervention (Interventionism-Non Interventionism)

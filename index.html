@@ -2,41 +2,42 @@
 <html>
 	<head>
 		<title>The Political Hexadecaract</title>
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
 		<script src="main.js"></script>
 	</head>
 	<body>
 		<header>
-			
+			<h1>The Political Hexadecaract</h1>
 		</header>
 		<main>
-			<h1>Select your language</h1>
+			<h2>Select your language</h2>
 			<div id="lang-buttons">
 			</div>
 		</main>
 		<script>
 function setLanguage(lang) {
-	document.cookie = "lang=" + lang;
+	document.cookie = "lang= \"" + lang + "\"";
 }
 
-function getLanguages() {
-	let req = new XMLHttpRequest();
-	req.open("GET", "languages.json", false);
-	req.onload = function () {
-		languages = JSON.parse(req.response);
-	}
-	req.send();
-}
-
-var languages = null;
-getLanguages();
-for (const lang of languages) {
-	let btn = document.createElement("a");
-	btn.setAttribute("class","linkbutton");
-	btn.setAttribute("href","quiz.html");
-	btn.setAttribute("onclick","setlanguage(" + lang.lid + ")");
-	btn.innerHTML = lang.name;
-	document.getElementById("lang-buttons").appendChild(btn);
-}
+fetch("languages.json")
+	.then(response => response.json())
+	.then(languages => {
+		for (const lang of languages) {
+			let btn = document.createElement("a");
+			btn.setAttribute("class","linkbutton");
+			btn.setAttribute("href","quiz.html");
+			btn.setAttribute("onclick","setlanguage(" + lang.lid + ")");
+			btn.innerHTML = lang.name;
+			document.getElementById("lang-buttons").appendChild(btn);
+		}
+	});
 		</script>
+		<footer>	
+			<nav>
+				<ul>
+					<li><a href="https://github.com/deekts/political-hexadecaract/">Github</a></li>
+				</ul>
+			</nav>	
+		</footer>
 	</body>
 </html>
