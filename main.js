@@ -11,13 +11,13 @@ function getLocalisation(lang) {
 	}
 }
 
-async function writePhrase(phraseid) {
+async function getPhrase(phraseid) {
 	var pidParts = phraseid.split(".");
 	var localisationVal = await getLocalisation(language);
 	while (pidParts.length) {
 		localisationVal = localisationVal[pidParts.shift()];
 	}
-	document.currentScript.insertAdjacentHTML("beforebegin", localisationVal);
+	return localisationVal;
 }
 
 if (document.cookie.split(";").some(item => item.trim().startsWith("lang="))) {
@@ -26,3 +26,9 @@ if (document.cookie.split(";").some(item => item.trim().startsWith("lang="))) {
 	language = "en";
 }
 getLocalisation(language);
+
+document.addEventListener('DOMContentLoaded', async (event) => {
+	for (let node of document.querySelectorAll("[pid]")) {
+		node.innerHTML = await getPhrase(node.getAttribute("pid"));
+	}
+});
