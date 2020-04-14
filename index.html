@@ -11,14 +11,10 @@
 		</header>
 		<main>
 			<h2>Select your language</h2>
-			<div id="lang-buttons">
+			<div id="languages">
 			</div>
 		</main>
 		<script>
-function setLanguage(lang) {
-	document.cookie = "lang= \"" + lang + "\"";
-}
-
 fetch("languages.json")
 	.then(response => response.json())
 	.then(languages => {
@@ -26,9 +22,9 @@ fetch("languages.json")
 			let btn = document.createElement("a");
 			btn.setAttribute("class","linkbutton");
 			btn.setAttribute("href","quiz.html");
-			btn.setAttribute("onclick","setlanguage(" + lang.lid + ")");
+			btn.onclick = _ => {document.cookie = "lang=" + lang.lid}
 			btn.innerHTML = lang.name;
-			document.getElementById("lang-buttons").appendChild(btn);
+			document.getElementById("languages").appendChild(btn);
 		}
 	});
 		</script>
