@@ -27,7 +27,7 @@ if (document.cookie.split(";").some(item => item.trim().startsWith("lang="))) {
 }
 getLocalisation(language);
 
-document.addEventListener('DOMContentLoaded', async (event) => {
+document.addEventListener('DOMContentLoaded', async _ => {
 	for (let node of document.querySelectorAll("[pid]")) {
 		node.innerHTML = await getPhrase(node.getAttribute("pid"));
 	}

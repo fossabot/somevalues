@@ -1,0 +1,34 @@
+{
+	"languages":[
+		{
+			"lid":"en",
+			"name":"English"
+		},
+		{
+			"lid":"es",
+			"name":"Español"
+		}
+	],
+	"opinions":[
+		{
+			"id":"highpos",
+			"multiplier":2
+		},
+		{
+			"id":"lowpos",
+			"multiplier":1
+		},
+		{
+			"id":"neutral",
+			"multiplier":0
+		},
+		{
+			"id":"lowneg",
+			"multiplier":-1
+		},
+		{
+			"id":"highneg",
+			"multiplier":-2
+		}
+	]
+}

@@ -11,6 +11,74 @@
 		<main>
 			<h1 pid="quiz.header"></h1>
 			<p pid="quiz.preamble"></p>
+			<button id="start" pid="quiz.start"></button>
 		</main>
+		<script>
+var promptCache = null;
+var spectrumCache = null;
+var chosenMultipliers = [];
+
+function shuffleFY(originalArray) {
+	const array = originalArray.slice(0);
+
+	for (let i = (array.length - 1); i > 0; i -= 1) {
+		const randomIndex = Math.floor(Math.random() * (i + 1));
+		[array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+	}
+	
+	return array;
+}
+
+function nextQuestion(multiplier) {
+}
+
+function prevQuestion() {
+}
+
+function initLayout() {
+	document.getElementsByTagName("main")[0].innerHTML = "";
+	
+	let prompt = document.createElement("p");
+	prompt.setAttribute("id", "prompt");
+	document.getElementsByTagName("main")[0].appendChild(prompt);
+
+	let opinions = null;
+	fetch("config.json")
+		.then(response => response.json())
+		.then(config => {opinions = config.opinions});
+	
+	for (let opinion in opinions) {
+		let opbtn = document.createElement("button");
+		opbtn.innerHTML = getPhrase("quiz.opinions." + opinion.id);
+		opbtn.setAttribute("id", opinion.id);
+		opbtn.onclick = nextQuestion(opinion.multiplier)
+		document.getElementsByTagName("main")[0].appendChild(opbtn);	
+	}
+	
+	let backbtn = document.createElement("button");
+	backbtn.innerHTML = getPhrase("quiz.back");
+	backbtn.setAttribute("id", "back");
+	backbtn.onclick = prevQuestion()
+	document.getElementsByTagName("main")[0].appendChild(backbtn);
+}
+
+document.getElementById("start").onclick = _ => {
+	initLayout();
+	
+	fetch("prompts.json")
+		.then(response => response.json())
+		.then(prompts => promptCache = shuffleFY(prompts));
+	
+	fetch("spectrums.json")
+		.then(response => response.json())
+		.then(spectrums => {
+			spectrums.map(spectrum => {
+				spectrum.lval = 0;
+				spectrum.rval = 0;
+			});
+			spectrumCache = spectrums;
+		});
+}
+		</script>
 	</body>
 </html>

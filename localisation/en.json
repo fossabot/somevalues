@@ -49,12 +49,21 @@
 		"anthro":"Anthropocentrism",
 		"ecolog":"Ecology"
 	},
-	"questions":{
+	"prompts":{
 		"1":"placeholder"
 	},
 	"quiz":{
 		"header":"placeholder",
-		"preamble":"placeholder"
+		"preamble":"placeholder",
+		"start":"Start",
+		"back":"Back",
+		"opinions":{
+			"highpos":"Agree",
+			"lowpos":"Somewhat agree",
+			"neutral":"Neutral",
+			"lowneg":"Somewhat disagree",
+			"highneg":"Disagree"
+		}
 	},
 	"title":"The Political Hexadecaract"
 }

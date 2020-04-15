@@ -15,10 +15,10 @@
 			</div>
 		</main>
 		<script>
-fetch("languages.json")
+fetch("config.json")
 	.then(response => response.json())
-	.then(languages => {
-		for (const lang of languages) {
+	.then(config => {
+		for (const lang of config.languages) {
 			let btn = document.createElement("a");
 			btn.setAttribute("class","linkbutton");
 			btn.setAttribute("href","quiz.html");
