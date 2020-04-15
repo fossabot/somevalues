@@ -35,7 +35,7 @@ function nextQuestion(multiplier) {
 function prevQuestion() {
 }
 
-function initLayout() {
+async function initLayout() {
 	document.getElementsByTagName("main")[0].innerHTML = "";
 	
 	let prompt = document.createElement("p");
@@ -43,33 +43,33 @@ function initLayout() {
 	document.getElementsByTagName("main")[0].appendChild(prompt);
 
 	let opinions = null;
-	fetch("config.json")
+	await fetch("config.json")
 		.then(response => response.json())
 		.then(config => {opinions = config.opinions});
 	
-	for (let opinion in opinions) {
+	for (let opinion of opinions) {
 		let opbtn = document.createElement("button");
-		opbtn.innerHTML = getPhrase("quiz.opinions." + opinion.id);
+		opbtn.innerHTML = await getPhrase("quiz.opinions." + opinion.id);
 		opbtn.setAttribute("id", opinion.id);
 		opbtn.onclick = nextQuestion(opinion.multiplier)
 		document.getElementsByTagName("main")[0].appendChild(opbtn);	
 	}
 	
 	let backbtn = document.createElement("button");
-	backbtn.innerHTML = getPhrase("quiz.back");
+	backbtn.innerHTML = await getPhrase("quiz.back");
 	backbtn.setAttribute("id", "back");
 	backbtn.onclick = prevQuestion()
 	document.getElementsByTagName("main")[0].appendChild(backbtn);
 }
 
-document.getElementById("start").onclick = _ => {
+document.getElementById("start").onclick = async _ => {
 	initLayout();
 	
-	fetch("prompts.json")
+	await fetch("prompts.json")
 		.then(response => response.json())
 		.then(prompts => promptCache = shuffleFY(prompts));
 	
-	fetch("spectrums.json")
+	await fetch("spectrums.json")
 		.then(response => response.json())
 		.then(spectrums => {
 			spectrums.map(spectrum => {
