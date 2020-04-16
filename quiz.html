@@ -74,16 +74,16 @@ async function initLayout() {
 	
 	for (let opinion of opinions) {
 		let opbtn = document.createElement("button");
-		opbtn.innerHTML = localisationCache.quiz[opinion.id];
+		opbtn.innerHTML = localisationCache.quiz.opinions[opinion.id];
 		opbtn.setAttribute("id", opinion.id);
-		opbtn.onclick = nextPrompt(opinion.multiplier)
+		opbtn.addEventListener("click",_ => nextPrompt(opinion.multiplier));
 		document.getElementsByTagName("main")[0].appendChild(opbtn);	
 	}
 	
 	let backbtn = document.createElement("button");
 	backbtn.innerHTML = localisationCache.quiz.back;
 	backbtn.setAttribute("id", "back");
-	backbtn.onclick = prevPrompt()
+	backbtn.addEventListener("click",_ => prevPrompt());
 	document.getElementsByTagName("main")[0].appendChild(backbtn);
 }
 
@@ -92,7 +92,7 @@ document.getElementById("start").onclick = async _ => {
 	
 	await fetch("prompts.json")
 		.then(response => response.json())
-		.then(prompts => promptCache = shuffleFY(prompts));
+		.then(prompts => promptCache = shuffleFY(prompts));	
 	
 	await fetch("spectrums.json")
 		.then(response => response.json())
