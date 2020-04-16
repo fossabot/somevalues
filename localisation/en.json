@@ -49,9 +49,11 @@
 		"anthro":"Anthropocentrism",
 		"ecolog":"Ecology"
 	},
-	"prompts":{
-		"1":"placeholder"
-	},
+	"prompts":[
+		"placeholder",
+		"placeholder1",
+		"placeholder2"
+	],
 	"quiz":{
 		"header":"placeholder",
 		"preamble":"placeholder",

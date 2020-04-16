@@ -29,14 +29,39 @@ function shuffleFY(originalArray) {
 	return array;
 }
 
-function nextQuestion(multiplier) {
+async function initPrompt() {
+	document.getElementById("prompt").innerHTML = localisationCache.prompts[promptCache[chosenMultipliers.length].qid];
+	document.getElementById("progress").innerHTML = Math.round(chosenMultipliers.length / promptCache.length * 100) + "%";
 }
 
-function prevQuestion() {
+function nextPrompt(multiplier) {
+	for (let value of promptCache[chosenMultipliers.length].values) {
+		let valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid);
+		let result = multiplier * value.modifier;
+		if (result < 0) {valSpectrum.lval += result * -1;}
+		else {valSpectrum.rval += result;}
+	}
+	chosenMultipliers.push(multiplier);
+	initPrompt();
+}
+
+function prevPrompt() {
+	for (let value of promptCache[chosenMultipliers.length - 1].values) {
+		let valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid);
+		let result = chosenMultipliers[chosenMultipliers.length - 1] * value.modifier;
+		if (result < 0) {valSpectrum.lval -= result * -1;}
+		else {valSpectrum.rval -= result;}
+	}
+	chosenMultipliers.pop();
+	initPrompt();
 }
 
 async function initLayout() {
 	document.getElementsByTagName("main")[0].innerHTML = "";
+	
+	let progress = document.createElement("h2");
+	progress.setAttribute("id", "progress");
+	document.getElementsByTagName("main")[0].appendChild(progress);
 	
 	let prompt = document.createElement("p");
 	prompt.setAttribute("id", "prompt");
@@ -49,16 +74,16 @@ async function initLayout() {
 	
 	for (let opinion of opinions) {
 		let opbtn = document.createElement("button");
-		opbtn.innerHTML = await getPhrase("quiz.opinions." + opinion.id);
+		opbtn.innerHTML = localisationCache.quiz[opinion.id];
 		opbtn.setAttribute("id", opinion.id);
-		opbtn.onclick = nextQuestion(opinion.multiplier)
+		opbtn.onclick = nextPrompt(opinion.multiplier)
 		document.getElementsByTagName("main")[0].appendChild(opbtn);	
 	}
 	
 	let backbtn = document.createElement("button");
-	backbtn.innerHTML = await getPhrase("quiz.back");
+	backbtn.innerHTML = localisationCache.quiz.back;
 	backbtn.setAttribute("id", "back");
-	backbtn.onclick = prevQuestion()
+	backbtn.onclick = prevPrompt()
 	document.getElementsByTagName("main")[0].appendChild(backbtn);
 }
 
@@ -78,6 +103,8 @@ document.getElementById("start").onclick = async _ => {
 			});
 			spectrumCache = spectrums;
 		});
+
+	initPrompt();
 }
 		</script>
 	</body>

@@ -1,10 +1,28 @@
 [
 	{
+		"qid":0,
+		"values":[
+			{
+				"spid":"social",
+				"modifier":2
+			}
+		]
+	},
+	{
 		"qid":1,
 		"values":[
 			{
 				"spid":"social",
-				"value":0
+				"modifier":-1
+			}
+		]
+	},
+	{
+		"qid":2,
+		"values":[
+			{
+				"spid":"social",
+				"modifier":-2
 			}
 		]
 	}
