@@ -29,12 +29,25 @@ function shuffleFY(originalArray) {
 	return array;
 }
 
+function getResults() {
+	let url = new URL("https://deekts.github.io/political-hexadecaract/results.html");
+	for (let spectrum of spectrumCache) {
+		let lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100 * 10) / 10;
+		url.searchParams.append(spectrum.spid, lvalPercent);
+	}
+	location.href = url;
+}
+
 async function initPrompt() {
 	document.getElementById("prompt").innerHTML = localisationCache.prompts[promptCache[chosenMultipliers.length].qid];
 	document.getElementById("progress").innerHTML = Math.round(chosenMultipliers.length / promptCache.length * 100) + "%";
 }
 
 function nextPrompt(multiplier) {
+	if (chosenMultipliers.length + 1 == promptCache.length) {
+		getResults();
+		return;
+	}
 	for (let value of promptCache[chosenMultipliers.length].values) {
 		let valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid);
 		let result = multiplier * value.modifier;
@@ -46,6 +59,7 @@ function nextPrompt(multiplier) {
 }
 
 function prevPrompt() {
+	if (chosenMultipliers.length == 0) return;
 	for (let value of promptCache[chosenMultipliers.length - 1].values) {
 		let valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid);
 		let result = chosenMultipliers[chosenMultipliers.length - 1] * value.modifier;
