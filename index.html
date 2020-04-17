@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Political Hexadecaract</title>
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>The Political Hexadecaract</h1>
+		</header>
+		<main>
+			<h2>Select your language</h2>
+			<div id="languages">
+			</div>
+		</main>
+		<script>
+fetch("config.json")
+	.then(response => response.json())
+	.then(config => {
+		for (const lang of config.languages) {
+			let btn = document.createElement("a");
+			btn.setAttribute("class","linkbutton");
+			btn.setAttribute("href","quiz.html");
+			btn.onclick = _ => {document.cookie = "lang=" + lang.lid}
+			btn.innerHTML = lang.name;
+			document.getElementById("languages").appendChild(btn);
+		}
+	});
+		</script>
+		<footer>	
+			<nav>
+				<ul>
+					<li><a href="https://github.com/deekts/political-hexadecaract/">Github</a></li>
+				</ul>
+			</nav>	
+		</footer>
+	</body>
+</html>
