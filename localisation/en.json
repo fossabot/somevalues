@@ -67,5 +67,9 @@
 			"highneg":"Disagree"
 		}
 	},
+	"results":{
+		"header":"placeholder",
+		"preamble":"placeholder"
+	}
 	"title":"The Political Hexadecaract"
 }
