@@ -1,19 +1,23 @@
 on: [push, pull_request]
 
 jobs:
-  build:
+  build_and_push:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - run: |
-      ./.build/makePages.sh
-      git config --global user.name "GitHub Action"
-      git config --global user.email "action@github.com"
-      git add -A
-      git commit -m "Built pages"
+    - name: Make pages
+      run: ./.build/makePages.sh
+      
+    - name: Git commit
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        git add -A
+        git commit -m "Built pages"
 
-    - uses: ad-m/github-push-action@master
+    - name: Git push
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
