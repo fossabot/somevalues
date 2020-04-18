@@ -29,15 +29,16 @@ function getResults() {
 }
 
 async function initPrompt() {
+	if (!chosenMultipliers) {
+		document.getElementById("back").disabled = true
+	}else {	
+		document.getElementById("back").disabled = false
+	}
 	document.getElementById("prompt").innerHTML = localisationCache.prompts[promptCache[chosenMultipliers.length].qid];
 	document.getElementById("progress").innerHTML = Math.round(chosenMultipliers.length / promptCache.length * 100) + "%";
 }
 
 function nextPrompt(multiplier) {
-	if (chosenMultipliers.length + 1 == promptCache.length) {
-		getResults();
-		return;
-	}
 	for (let value of promptCache[chosenMultipliers.length].values) {
 		let valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid);
 		let result = multiplier * value.modifier;
@@ -45,6 +46,10 @@ function nextPrompt(multiplier) {
 		else {valSpectrum.rval += result;}
 	}
 	chosenMultipliers.push(multiplier);
+	if (chosenMultipliers.length == promptCache.length) {
+		getResults();
+		return;
+	}
 	initPrompt();
 }
 
