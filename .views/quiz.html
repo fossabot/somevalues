@@ -45,11 +45,11 @@ function nextPrompt(multiplier) {
 		if (result < 0) {valSpectrum.lval += result * -1;}
 		else {valSpectrum.rval += result;}
 	}
-	chosenMultipliers.push(multiplier);
-	if (chosenMultipliers.length == promptCache.length) {
+	if (chosenMultipliers.length + 1 == promptCache.length) {
 		getResults();
 		return;
 	}
+	chosenMultipliers.push(multiplier);
 	initPrompt();
 }
 
