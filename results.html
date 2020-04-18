@@ -24,7 +24,7 @@ async function initLayout() {
 		.then(spectrums => {spectrumCache = spectrums});
 	
 	var urlParams = new URL(location).searchParams;
-	urlParams.forEach((spectrum, lval) => {
+	urlParams.forEach((lval, spectrum) => {
 		var paramSpectrum = spectrumCache.find(cache => cache.spid == spectrum);
 		var axis = document.createElement("div");
 		axis.setAttribute("class","axis");
