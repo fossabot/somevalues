@@ -40,7 +40,7 @@ function getResults() {
 }
 
 async function initPrompt() {
-	if (!chosenMultipliers) {
+	if (!chosenMultipliers.length) {
 		document.getElementById("back").disabled = true
 	}else {	
 		document.getElementById("back").disabled = false
