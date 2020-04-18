@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>The Political Hexadecaract</title>
+		<title pid="title"></title>
 		<link rel="stylesheet" type="text/css" href="styles.css"/>
 		<script src="main.js"></script>
 	</head>
 	<body>
 		<header>
-			<h1>The Political Hexadecaract</h1>
+			<h1 pid="title"></h1>
 		</header>
 		<main>
 			<h1 pid="quiz.header"></h1>
@@ -31,7 +31,7 @@ function shuffleFY(originalArray) {
 }
 
 function getResults() {
-	let url = new URL("https://deekts.github.io/political-hexadecaract/results.html");
+	let url = new URL(HOSTNAME + "results.html");
 	for (let spectrum of spectrumCache) {
 		let lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100 * 10) / 10;
 		url.searchParams.append(spectrum.spid, lvalPercent);
