@@ -1,5 +1,8 @@
-var localisationCache = null;
-var language = null;
+const DEFAULTLANGUAGE = "en";
+const HOSTNAME = "https://deekts.github.io/political-hexedekeract/";
+
+var language = DEFAULTLANGUAGE;
+var localisationCache;
 
 function getLocalisation(lang) {
 	if (localisationCache == null) {
@@ -22,8 +25,6 @@ async function getPhrase(phraseid) {
 
 if (document.cookie.split(";").some(item => item.trim().startsWith("lang="))) {
 	language = document.cookie.split(";").find(item => item.trim().startsWith("lang=")).substring(5);
-} else {
-	language = "en";
 }
 getLocalisation(language);
 

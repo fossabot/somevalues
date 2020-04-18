@@ -20,7 +20,7 @@ function shuffleFY(originalArray) {
 }
 
 function getResults() {
-	let url = new URL("https://deekts.github.io/political-hexadecaract/results.html");
+	let url = new URL(HOSTNAME + "results.html");
 	for (let spectrum of spectrumCache) {
 		let lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100 * 10) / 10;
 		url.searchParams.append(spectrum.spid, lvalPercent);
