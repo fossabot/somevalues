@@ -71,5 +71,8 @@
 		"header":"placeholder",
 		"preamble":"placeholder"
 	},
+	"languagesel":{
+		"header":"Select your language"
+	},
 	"title":"The Political Hexedekeract"
 }
