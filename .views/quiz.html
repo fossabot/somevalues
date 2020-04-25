@@ -4,8 +4,6 @@
 			<button id="start" pid="quiz.start"></button>
 		</main>
 		<script>
-var promptCache = null;
-var spectrumCache = null;
 var chosenMultipliers = [];
 
 function shuffleFY(originalArray) {
@@ -20,7 +18,7 @@ function shuffleFY(originalArray) {
 }
 
 function getResults() {
-	let url = new URL(HOSTNAME + "results.html");
+	let url = new URL(configCache.hostname + "results.html");
 	for (let spectrum of spectrumCache) {
 		let lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100 * 10) / 10;
 		url.searchParams.append(spectrum.spid, lvalPercent);
@@ -76,12 +74,7 @@ async function initLayout() {
 	prompt.setAttribute("id", "prompt");
 	document.getElementsByTagName("main")[0].appendChild(prompt);
 
-	let opinions = null;
-	await fetch("config.json")
-		.then(response => response.json())
-		.then(config => {opinions = config.opinions});
-	
-	for (let opinion of opinions) {
+	for (let opinion of configCache.opinions) {
 		let opbtn = document.createElement("button");
 		opbtn.innerHTML = localisationCache.quiz.opinions[opinion.id];
 		opbtn.setAttribute("id", opinion.id);
@@ -99,19 +92,12 @@ async function initLayout() {
 document.getElementById("start").onclick = async _ => {
 	initLayout();
 	
-	await fetch("prompts.json")
-		.then(response => response.json())
-		.then(prompts => promptCache = shuffleFY(prompts));	
+	promptCache = shuffleFY(promptCache);	
 	
-	await fetch("spectrums.json")
-		.then(response => response.json())
-		.then(spectrums => {
-			spectrums.map(spectrum => {
-				spectrum.lval = 0;
-				spectrum.rval = 0;
-			});
-			spectrumCache = spectrums;
-		});
+	spectrumCache.map(spectrum => {
+		spectrum.lval = 0;
+		spectrum.rval = 0;
+	});
 
 	initPrompt();
 }

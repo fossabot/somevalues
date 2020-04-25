@@ -1,31 +1,28 @@
-const HOSTNAME = "https://deekts.github.io/political-hexedekeract/";
-
 var language = localStorage.getItem('lang') || 'en';
-var localisationCache;
 
-function getLocalisation(lang) {
-	if (localisationCache == null) {
-		return fetch("localisation/" + lang + ".json")
-			.then(response => response.json())
-			.then(data => localisationCache = data);
-	} else {
-		return localisationCache;
-	}
+cacheFile(`localisation/${language}.json`, 'localisation', 'localisationCache')
+cacheFile('spectrums.json', 'spectrums', 'spectrumCache')
+cacheFile('prompts.json', 'prompts', 'promptCache')
+cacheFile('config.json', 'config', 'configCache')
+
+function cacheFile(location, storageKey, variableName) {
+	window[variableName] = JSON.parse(sessionStorage.getItem(storageKey))
+	if (window[variableName]) return;
+	fetch(location)
+		.then(response => response.json())
+		.then(data => {
+			sessionStorage.setItem(storageKey, JSON.stringify(data))
+			window[variableName] = data
+		});
 }
 
-async function getPhrase(phraseid) {
-	var pidParts = phraseid.split(".");
-	var localisationVal = await getLocalisation(language);
-	while (pidParts.length) {
-		localisationVal = localisationVal[pidParts.shift()];
-	}
-	return localisationVal;
-}
-
-getLocalisation(language);
-
-document.addEventListener('DOMContentLoaded', async _ => {
+document.addEventListener('DOMContentLoaded', _ => {
 	for (let node of document.querySelectorAll("[pid]")) {
-		node.innerHTML = await getPhrase(node.getAttribute("pid"));
+		var pidParts = node.getAttribute("pid").split('.');
+		var localisationVal = localisationCache;
+		while (pidParts.length) {
+			localisationVal = localisationVal[pidParts.shift()];
+		}
+		node.innerHTML = localisationVal;
 	}
 });
