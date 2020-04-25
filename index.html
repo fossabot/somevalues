@@ -15,18 +15,14 @@
 			</div>
 		</main>
 		<script>
-fetch("config.json")
-	.then(response => response.json())
-	.then(config => {
-		for (const lang of config.languages) {
-			let btn = document.createElement("a");
-			btn.setAttribute("class","linkbutton");
-			btn.setAttribute("href","quiz.html");
-			btn.onclick = _ => {document.cookie = "lang=" + lang.lid}
-			btn.innerHTML = lang.name;
-			document.getElementById("languages").appendChild(btn);
-		}
-	});
+for (const lang of configCache.languages) {
+	let btn = document.createElement("a");
+	btn.setAttribute("class","linkbutton");
+	btn.setAttribute("href","quiz.html");
+	btn.onclick = _ => localStorage.setItem('lang', lang.lid)
+	btn.innerHTML = lang.name;
+	document.getElementById("languages").appendChild(btn);
+}
 		</script>
 		<footer>	
 			<nav>

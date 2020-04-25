@@ -16,13 +16,7 @@
 			</div>
 		</main>
 		<script>
-var spectrumCache = null;
-
 async function initLayout() {
-	await fetch("spectrums.json")
-		.then(response => response.json())
-		.then(spectrums => {spectrumCache = spectrums});
-	
 	var urlParams = new URL(location).searchParams;
 	urlParams.forEach((lval, spectrum) => {
 		var paramSpectrum = spectrumCache.find(cache => cache.spid == spectrum);
@@ -30,7 +24,7 @@ async function initLayout() {
 		axis.setAttribute("class","axis");
 
 		var limg = document.createElement("img");
-		limg.setAttribute("src","https://deekts.github.io/images/" + paramSpectrum.left + ".png");
+		limg.setAttribute("src", `${configCache.hostname}images/${paramSpectrum.left}.png`);
 		limg.setAttribute("class","img");
 
 		var lbar = document.createElement("div");
@@ -44,7 +38,7 @@ async function initLayout() {
 		rbar.innerHTML = 100 - lval;
 		
 		var rimg = document.createElement("img");
-		rimg.setAttribute("src","https://deekts.github.io/images/" + paramSpectrum.right + ".png");
+		rimg.setAttribute("src", `${configCache.hostname}images/${paramSpectrum.right}.png`);
 		rimg.setAttribute("class","img");
 
 		axis.appendChild(limg);
