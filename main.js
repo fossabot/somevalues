@@ -18,13 +18,14 @@ cacheFile('config.json', 'config', 'configCache')
 
 function cacheFile(location, storageKey, variableName) {
 	window[variableName] = JSON.parse(sessionStorage.getItem(storageKey))
-	if (window[variableName]) return;
-	fetch(location)
-		.then(response => response.json())
-		.then(data => {
-			sessionStorage.setItem(storageKey, JSON.stringify(data))
-			window[variableName] = data
-			window.dispatchEvent(new Event(`${storageKey}Load`))
-		});
+	if (!window[variableName]) {
+		fetch(location)
+			.then(response => response.json())
+			.then(data => {
+				sessionStorage.setItem(storageKey, JSON.stringify(data))
+				window[variableName] = data
+			});
+	}
+	window.dispatchEvent(new Event(`${storageKey}Load`))
 }
 

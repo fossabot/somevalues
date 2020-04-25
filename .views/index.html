@@ -4,12 +4,14 @@
 			</div>
 		</main>
 		<script>
-for (const lang of configCache.languages) {
-	let btn = document.createElement("a");
-	btn.setAttribute("class","linkbutton");
-	btn.setAttribute("href","quiz.html");
-	btn.onclick = _ => localStorage.setItem('lang', lang.lid)
-	btn.innerHTML = lang.name;
-	document.getElementById("languages").appendChild(btn);
-}
+window.addEventListener('configLoad', _ => {
+	for (const lang of configCache.languages) {
+		let btn = document.createElement("a");
+		btn.setAttribute("class","linkbutton");
+		btn.setAttribute("href","quiz.html");
+		btn.onclick = _ => localStorage.setItem('lang', lang.lid)
+		btn.innerHTML = lang.name;
+		document.getElementById("languages").appendChild(btn);
+	}
+})
 		</script>
