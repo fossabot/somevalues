@@ -16,38 +16,42 @@
 			</div>
 		</main>
 		<script>
-async function initLayout() {
-	var urlParams = new URL(location).searchParams;
-	urlParams.forEach((lval, spectrum) => {
-		var paramSpectrum = spectrumCache.find(cache => cache.spid == spectrum);
-		var axis = document.createElement("div");
-		axis.setAttribute("class","axis");
+async function initLayout () {
+  var urlParams = new URL(location).searchParams
+  const fragment = new DocumentFragment()
 
-		var limg = document.createElement("img");
-		limg.setAttribute("src", `${configCache.hostname}images/${paramSpectrum.left}.png`);
-		limg.setAttribute("class","img");
+  urlParams.forEach((lval, spectrum) => {
+    var paramSpectrum = spectrumCache.find(cache => cache.spid == spectrum)
+    var axis = document.createElement('div')
+    axis.setAttribute('class', 'axis')
 
-		var lbar = document.createElement("div");
-		lbar.setAttribute("width",lval);
-		lbar.setAttribute("class","lbar");
-		lbar.innerHTML = lval;
+    var limg = document.createElement('img')
+    limg.setAttribute('src', `${configCache.hostname}images/${paramSpectrum.left}.png`)
+    limg.setAttribute('class', 'img')
 
-		var rbar = document.createElement("div");
-		rbar.setAttribute("width",100 - lval);
-		rbar.setAttribute("class","rbar");
-		rbar.innerHTML = 100 - lval;
-		
-		var rimg = document.createElement("img");
-		rimg.setAttribute("src", `${configCache.hostname}images/${paramSpectrum.right}.png`);
-		rimg.setAttribute("class","img");
+    var lbar = document.createElement('div')
+    lbar.setAttribute('width', lval)
+    lbar.setAttribute('class', 'lbar')
+    lbar.innerHTML = lval
 
-		axis.appendChild(limg);
-		axis.appendChild(lbar);
-		axis.appendChild(rbar);
-		axis.appendChild(rimg);
+    var rbar = document.createElement('div')
+    rbar.setAttribute('width', 100 - lval)
+    rbar.setAttribute('class', 'rbar')
+    rbar.innerHTML = 100 - lval
 
-		document.getElementById("spectrums").appendChild(axis);
-	});
+    var rimg = document.createElement('img')
+    rimg.setAttribute('src', `${configCache.hostname}images/${paramSpectrum.right}.png`)
+    rimg.setAttribute('class', 'img')
+
+    axis.appendChild(limg)
+    axis.appendChild(lbar)
+    axis.appendChild(rbar)
+    axis.appendChild(rimg)
+
+    fragment.appendChild(axis)
+  })
+
+  document.getElementById('spectrums').appendChild(fragment)
 }
 
 window.addEventListener('configLoad', _ => initLayout())
