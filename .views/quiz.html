@@ -4,102 +4,100 @@
 			<button id="start" pid="quiz.start"></button>
 		</main>
 		<script>
-var chosenMultipliers = [];
+var chosenMultipliers = []
 
-function shuffleFY(originalArray) {
-	const array = originalArray.slice(0);
+function shuffleFY (originalArray) {
+  const array = originalArray.slice(0)
 
-	for (let i = (array.length - 1); i > 0; i -= 1) {
-		const randomIndex = Math.floor(Math.random() * (i + 1));
-		[array[i], array[randomIndex]] = [array[randomIndex], array[i]];
-	}
+  for (let i = (array.length - 1); i > 0; i -= 1) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]]
+  }
 
-	return array;
+  return array
 }
 
-function getResults() {
-	let url = new URL(configCache.hostname + "results.html");
-	for (let spectrum of spectrumCache) {
-		let lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100 * 10) / 10;
-		url.searchParams.append(spectrum.spid, lvalPercent);
-	}
-	location.href = url;
+function getResults () {
+  const url = new URL(configCache.hostname + 'results.html')
+  for (const spectrum of spectrumCache) {
+    const lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100 * 10) / 10
+    url.searchParams.append(spectrum.spid, lvalPercent)
+  }
+  location.href = url
 }
 
-async function initPrompt() {
-	document.getElementById("back").disabled = !!(chosenMultipliers.length)
+async function initPrompt () {
+  document.getElementById('back').disabled = !!(chosenMultipliers.length)
 
-	document.getElementById("prompt").innerHTML = localisationCache.prompts[promptCache[chosenMultipliers.length].qid];
-	document.getElementById("progress").innerHTML = Math.round(chosenMultipliers.length / promptCache.length * 100) + "%";
+  document.getElementById('prompt').innerHTML = localisationCache.prompts[promptCache[chosenMultipliers.length].qid]
+  document.getElementById('progress').innerHTML = Math.round(chosenMultipliers.length / promptCache.length * 100) + '%'
 }
 
-function nextPrompt(multiplier) {
-	for (let value of promptCache[chosenMultipliers.length].values) {
-		let valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid);
-		let result = multiplier * value.modifier;
-		if (result < 0) {valSpectrum.lval += result * -1;}
-		else {valSpectrum.rval += result;}
-	}
-	if (chosenMultipliers.length + 1 == promptCache.length) {
-		getResults();
-		return;
-	}
-	chosenMultipliers.push(multiplier);
-	initPrompt();
+function nextPrompt (multiplier) {
+  for (const value of promptCache[chosenMultipliers.length].values) {
+    const valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid)
+    const result = multiplier * value.modifier
+    if (result < 0) { valSpectrum.lval += result * -1 } else { valSpectrum.rval += result }
+  }
+  if (chosenMultipliers.length + 1 == promptCache.length) {
+    getResults()
+    return
+  }
+  chosenMultipliers.push(multiplier)
+  initPrompt()
 }
 
-function prevPrompt() {
-	if (!chosenMultipliers.length) return;
-	for (let value of promptCache[chosenMultipliers.length - 1].values) {
-		let valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid);
-		let result = chosenMultipliers[chosenMultipliers.length - 1] * value.modifier;
-		if (result < 0) {valSpectrum.lval -= result * -1;}
-		else {valSpectrum.rval -= result;}
-	}
-	chosenMultipliers.pop();
-	initPrompt();
+function prevPrompt () {
+  if (!chosenMultipliers.length) return
+  for (const value of promptCache[chosenMultipliers.length - 1].values) {
+    const valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid)
+    const result = chosenMultipliers[chosenMultipliers.length - 1] * value.modifier
+    if (result < 0) { valSpectrum.lval -= result * -1 } else { valSpectrum.rval -= result }
+  }
+  chosenMultipliers.pop()
+  initPrompt()
 }
 
-async function initLayout() {
-	document.getElementsByTagName("main")[0].innerHTML = "";
+async function initLayout () {
+  document.getElementsByTagName('main')[0].innerHTML = ''
 
-	let fragment = new DocumentFragment()
+  const fragment = new DocumentFragment()
 
-	let progress = document.createElement("h2");
-	progress.setAttribute("id", "progress");
-	fragment.appendChild(progress);
+  const progress = document.createElement('h2')
+  progress.setAttribute('id', 'progress')
+  fragment.appendChild(progress)
 
-	let prompt = document.createElement("p");
-	prompt.setAttribute("id", "prompt");
-	fragment.appendChild(prompt);
+  const prompt = document.createElement('p')
+  prompt.setAttribute('id', 'prompt')
+  fragment.appendChild(prompt)
 
-	for (let opinion of configCache.opinions) {
-		let opbtn = document.createElement("button");
-		opbtn.innerHTML = localisationCache.quiz.opinions[opinion.id];
-		opbtn.setAttribute("id", opinion.id);
-		opbtn.addEventListener("click",_ => nextPrompt(opinion.multiplier));
-		fragment.appendChild(opbtn);	
-	}
+  for (const opinion of configCache.opinions) {
+    const opbtn = document.createElement('button')
+    opbtn.innerHTML = localisationCache.quiz.opinions[opinion.id]
+    opbtn.setAttribute('id', opinion.id)
+    opbtn.addEventListener('click', _ => nextPrompt(opinion.multiplier))
+    fragment.appendChild(opbtn)
+  }
 
-	let backbtn = document.createElement("button");
-	backbtn.innerHTML = localisationCache.quiz.back;
-	backbtn.setAttribute("id", "back");
-	backbtn.addEventListener("click",_ => prevPrompt());
-	fragment.appendChild(backbtn);
+  const backbtn = document.createElement('button')
+  backbtn.innerHTML = localisationCache.quiz.back
+  backbtn.setAttribute('id', 'back')
+  backbtn.addEventListener('click', _ => prevPrompt())
+  fragment.appendChild(backbtn)
 
-	document.getElementsByTagName("main")[0].appendChild(fragment);
+  document.getElementsByTagName('main')[0].appendChild(fragment)
 }
 
-document.getElementById("start").onclick = async _ => {
-	initLayout();
+document.getElementById('start').onclick = async _ => {
+  initLayout()
 
-	promptCache = shuffleFY(promptCache);	
+  promptCache = shuffleFY(promptCache)
 
-	spectrumCache.map(spectrum => {
-		spectrum.lval = 0;
-		spectrum.rval = 0;
-	});
+  spectrumCache.map(spectrum => {
+    spectrum.lval = 0
+    spectrum.rval = 0
+  })
 
-	initPrompt();
+  initPrompt()
 }
 		</script>
