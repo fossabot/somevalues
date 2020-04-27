@@ -9,22 +9,25 @@ window.addEventListener('localisationLoad', _ => {
 		}
 		node.innerHTML = localisationVal;
 	}
-});
+})
 
-cacheFile(`localisation/${language}.json`, 'localisation', 'localisationCache')
-cacheFile('spectrums.json', 'spectrums', 'spectrumCache')
-cacheFile('prompts.json', 'prompts', 'promptCache')
-cacheFile('config.json', 'config', 'configCache')
+window.addEventListener('DOMContentLoaded', _ => {
+	cacheFile(`localisation/${language}.json`, 'localisation', 'localisationCache')
+	cacheFile('spectrums.json', 'spectrums', 'spectrumCache')
+	cacheFile('prompts.json', 'prompts', 'promptCache')
+	cacheFile('config.json', 'config', 'configCache')
+})
 
-function cacheFile(location, storageKey, variableName) {
+async function cacheFile(location, storageKey, variableName) {
 	window[variableName] = JSON.parse(sessionStorage.getItem(storageKey))
+
 	if (window[variableName]) return window.dispatchEvent(new Event(`${storageKey}Load`))
-	fetch(location)
-		.then(response => response.json())
-		.then(data => {
-			sessionStorage.setItem(storageKey, JSON.stringify(data))
-			window[variableName] = data
-			window.dispatchEvent(new Event(`${storageKey}Load`))
-		});
+
+	let response = await fetch(location)
+	let data = await response.json()
+
+	sessionStorage.setItem(storageKey, JSON.stringify(data))
+	window[variableName] = data
+	window.dispatchEvent(new Event(`${storageKey}Load`))
 }
 
