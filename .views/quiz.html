@@ -87,7 +87,7 @@ async function initLayout() {
 	backbtn.addEventListener("click",_ => prevPrompt());
 	fragment.appendChild(backbtn);
 
-	document.getElementById("languages").appendChild(fragment);
+	document.getElementsByTagName("main")[0].appendChild(fragment);
 }
 
 document.getElementById("start").onclick = async _ => {
