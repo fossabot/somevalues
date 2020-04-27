@@ -49,7 +49,7 @@ function nextPrompt(multiplier) {
 }
 
 function prevPrompt() {
-	if (chosenMultipliers.length == 0) return;
+	if (!chosenMultipliers.length) return;
 	for (let value of promptCache[chosenMultipliers.length - 1].values) {
 		let valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid);
 		let result = chosenMultipliers[chosenMultipliers.length - 1] * value.modifier;
@@ -62,35 +62,39 @@ function prevPrompt() {
 
 async function initLayout() {
 	document.getElementsByTagName("main")[0].innerHTML = "";
-	
+
+	let fragment = new DocumentFragment()
+
 	let progress = document.createElement("h2");
 	progress.setAttribute("id", "progress");
-	document.getElementsByTagName("main")[0].appendChild(progress);
-	
+	fragment.appendChild(progress);
+
 	let prompt = document.createElement("p");
 	prompt.setAttribute("id", "prompt");
-	document.getElementsByTagName("main")[0].appendChild(prompt);
+	fragment.appendChild(prompt);
 
 	for (let opinion of configCache.opinions) {
 		let opbtn = document.createElement("button");
 		opbtn.innerHTML = localisationCache.quiz.opinions[opinion.id];
 		opbtn.setAttribute("id", opinion.id);
 		opbtn.addEventListener("click",_ => nextPrompt(opinion.multiplier));
-		document.getElementsByTagName("main")[0].appendChild(opbtn);	
+		fragment.appendChild(opbtn);	
 	}
-	
+
 	let backbtn = document.createElement("button");
 	backbtn.innerHTML = localisationCache.quiz.back;
 	backbtn.setAttribute("id", "back");
 	backbtn.addEventListener("click",_ => prevPrompt());
-	document.getElementsByTagName("main")[0].appendChild(backbtn);
+	fragment.appendChild(backbtn);
+
+	document.getElementById("languages").appendChild(fragment);
 }
 
 document.getElementById("start").onclick = async _ => {
 	initLayout();
-	
+
 	promptCache = shuffleFY(promptCache);	
-	
+
 	spectrumCache.map(spectrum => {
 		spectrum.lval = 0;
 		spectrum.rval = 0;

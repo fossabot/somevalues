@@ -5,13 +5,20 @@
 		</main>
 		<script>
 window.addEventListener('configLoad', _ => {
+	let fragment = new DocumentFragment()
+
 	for (const lang of configCache.languages) {
 		let btn = document.createElement("a");
 		btn.setAttribute("class","linkbutton");
 		btn.setAttribute("href","quiz.html");
-		btn.onclick = _ => localStorage.setItem('lang', lang.lid)
+		btn.onclick = _ => {
+			localStorage.setItem('lang', lang.lid)
+			cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
+		}
 		btn.innerHTML = lang.name;
-		document.getElementById("languages").appendChild(btn);
+		fragment.appendChild(btn);
 	}
+
+	document.getElementById("languages").appendChild(fragment);
 })
 		</script>

@@ -12,17 +12,21 @@ window.addEventListener('localisationLoad', _ => {
 })
 
 window.addEventListener('DOMContentLoaded', _ => {
-	cacheFile(`localisation/${language}.json`, 'localisation', 'localisationCache')
-	cacheFile('spectrums.json', 'spectrums', 'spectrumCache')
-	cacheFile('prompts.json', 'prompts', 'promptCache')
-	cacheFile('config.json', 'config', 'configCache')
+	getCache(`localisation/${language}.json`, 'localisation', 'localisationCache')
+	getCache('spectrums.json', 'spectrums', 'spectrumCache')
+	getCache('prompts.json', 'prompts', 'promptCache')
+	getCache('config.json', 'config', 'configCache')
 })
 
-async function cacheFile(location, storageKey, variableName) {
+function getCache(location, storageKey, variableName) {
 	window[variableName] = JSON.parse(sessionStorage.getItem(storageKey))
 
 	if (window[variableName]) return window.dispatchEvent(new Event(`${storageKey}Load`))
 
+	cacheFile(location, storageKey, variableName)
+}
+
+async function cacheFile(location, storageKey, variableName) {
 	let response = await fetch(location)
 	let data = await response.json()
 
