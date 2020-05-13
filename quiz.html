@@ -40,8 +40,8 @@ function getResults () {
 async function initPrompt () {
   document.getElementById('back').disabled = !!(chosenMultipliers.length)
 
-  document.getElementById('prompt').innerHTML = localisationCache.prompts[promptCache[chosenMultipliers.length].qid]
-  document.getElementById('progress').innerHTML = Math.round(chosenMultipliers.length / promptCache.length * 100) + '%'
+  document.getElementById('prompt').innerText = localisationCache.prompts[promptCache[chosenMultipliers.length].qid]
+  document.getElementById('progress').innerText = Math.round(chosenMultipliers.length / promptCache.length * 100) + '%'
 }
 
 function nextPrompt (multiplier) {
@@ -70,7 +70,7 @@ function prevPrompt () {
 }
 
 async function initLayout () {
-  document.getElementsByTagName('main')[0].innerHTML = ''
+  document.getElementsByTagName('main')[0].innerText = ''
 
   const fragment = new DocumentFragment()
 
@@ -84,14 +84,14 @@ async function initLayout () {
 
   for (const opinion of configCache.opinions) {
     const opbtn = document.createElement('button')
-    opbtn.innerHTML = localisationCache.quiz.opinions[opinion.id]
+    opbtn.innerText = localisationCache.quiz.opinions[opinion.id]
     opbtn.setAttribute('id', opinion.id)
     opbtn.addEventListener('click', _ => nextPrompt(opinion.multiplier))
     fragment.appendChild(opbtn)
   }
 
   const backbtn = document.createElement('button')
-  backbtn.innerHTML = localisationCache.quiz.back
+  backbtn.innerText = localisationCache.quiz.back
   backbtn.setAttribute('id', 'back')
   backbtn.addEventListener('click', _ => prevPrompt())
   fragment.appendChild(backbtn)
