@@ -7,7 +7,7 @@ window.addEventListener('localisationLoad', _ => {
     while (pidParts.length) {
       localisationVal = localisationVal[pidParts.shift()]
     }
-    node.innerHTML = localisationVal
+    node.innerText = localisationVal
   }
 })
 
@@ -16,6 +16,8 @@ window.addEventListener('DOMContentLoaded', _ => {
   getCache('spectrums.json', 'spectrums', 'spectrumCache')
   getCache('prompts.json', 'prompts', 'promptCache')
   getCache('config.json', 'config', 'configCache')
+
+  document.title = localisationCache.title
 })
 
 function getCache (location, storageKey, variableName) {

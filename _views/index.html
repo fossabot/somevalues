@@ -15,7 +15,7 @@ window.addEventListener('configLoad', _ => {
       localStorage.setItem('lang', lang.lid)
       cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
     }
-    btn.innerHTML = lang.name
+    btn.innerText = lang.name
     fragment.appendChild(btn)
   }
 

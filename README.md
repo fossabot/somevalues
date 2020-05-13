@@ -2,8 +2,9 @@
 [![Discord Chat](https://img.shields.io/discord/697903296396132474.svg)](https://discord.gg/ZCbGYGF)
 [![GitHub Actions](https://github.com/deekts/political-hexedekeract/workflows/Build%20pages/badge.svg)](https://github.com/deekts/political-hexedekeract/actions)
 [![License](https://img.shields.io/github/license/deekts/political-hexedekeract)](LICENSE)
-
-The Political Hexedekeract is a political quiz that gives different scores on 16 different spectrums based on agreements and disagreements with different statements.
+[![StandardJS](https://img.shields.io/badge/code_style-standard-brightgreen)](https://standardjs.com/)
+The Political Hexedekeract is a political quiz that gives different scores on 16 spectrums based on agreements and disagreements with statements.
+It has been heavily inspired by [Politiscales](https://www.politiscales.net/), [8values](https://8values.github.io/), [9axes](https://9axes.github.io/) and other quizzes.
 
 ## What are these spectrums?
 There are 16 spectrums that cover a variety of different issues. These are:

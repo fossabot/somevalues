@@ -21,12 +21,12 @@ async function initLayout () {
     var lbar = document.createElement('div')
     lbar.setAttribute('width', lval)
     lbar.setAttribute('class', 'lbar')
-    lbar.innerHTML = lval
+    lbar.innerText = lval
 
     var rbar = document.createElement('div')
     rbar.setAttribute('width', 100 - lval)
     rbar.setAttribute('class', 'rbar')
-    rbar.innerHTML = 100 - lval
+    rbar.innerText = 100 - lval
 
     var rimg = document.createElement('img')
     rimg.setAttribute('src', `${configCache.hostname}images/${paramSpectrum.right}.png`)
