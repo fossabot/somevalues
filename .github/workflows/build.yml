@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Make pages
-      run: ./.build/makePages.sh
+      run: ./_build/makePages.sh
       
     - name: Git commit
       run: |
