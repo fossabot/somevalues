@@ -1,0 +1,46 @@
+{
+    "spectrums":{
+        "tech":"posseïdor",
+        "ludd":"Ludisme",
+        "phil":"Tecnofília",
+        "epis":"posseïdor",
+        "cons":"Constructivisme",
+        "esse":"Essencialisme",
+        "chan":"posseïdor",
+        "revo":"Revolucionari",
+        "refo":"Reformisme"
+    },
+    "prompts":[
+        "La revolució industrial i les seves conseqüències han estat un desastre per a la raça humana.",
+        "La tecnologia ha d'avançar a qualsevol preu.",
+        "L'automatització és en definitiva una cosa dolenta.",
+        "El transhumanisme serà beneficiós per a la humanitat.",
+        "És necessària la insurrecció per canviar de veritat la societat.",
+        "La revolució sempre acaba malament.",
+        "El sistema s'ha de canviar gradualment en comptes de radicalment.",
+        "La biologia pot explicar principalment les diferències socials entre homes i dones.",
+        "El gènere és una construcció social.",
+        "La ciènca no és absoluta i està sotmesa a canvis de la societat."
+    ],
+    "quiz":{
+        "header":"posseïdor",
+        "preamble":"posseïdor",
+        "start":"Començar",
+        "back":"Tornar d'inici",
+        "opinions":{
+            "highpos":"Completament d'acord",
+            "lowpos":"Una mica d'acord",
+            "neutral":"Dubtós",
+            "lowneg":"Més aviat d'acord",
+            "highneg":"Completament desacord"
+        }
+    },
+    "results":{
+        "header":"posseïdor",
+        "preamble":"posseïdor"
+    },
+    "languagesel":{
+        "header":"Seleccioneu l'idioma"
+    },
+    "title":"SomeValues"
+}
