@@ -10,10 +10,10 @@ window.addEventListener('configLoad', _ => {
   for (const lang of configCache.languages) {
     const btn = document.createElement('a')
     btn.setAttribute('class', 'linkbutton')
-    btn.setAttribute('href', 'quiz.html')
-    btn.onclick = _ => {
+    btn.onclick = async _ => {
       localStorage.setItem('lang', lang.lid)
-      cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
+      await cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
+      location.href = 'quiz.html'
     }
     btn.innerText = lang.name
     fragment.appendChild(btn)
