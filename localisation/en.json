@@ -23,24 +23,24 @@
         "Science isn't absolute and is subject to change from society."
     ],
     "quiz":{
-    	"header":"placeholder",
-    	"preamble":"placeholder",
-    	"start":"Start",
-    	"back":"Back",
-    	"opinions":{
-    	    "highpos":"Agree",
-    	    "lowpos":"Somewhat agree",
-    	    "neutral":"Neutral",
-    	    "lowneg":"Somewhat disagree",
-    	    "highneg":"Disagree"
-    	}
+        "header":"placeholder",
+        "preamble":"placeholder",
+        "start":"Start",
+        "back":"Back",
+        "opinions":{
+            "highpos":"Agree",
+            "lowpos":"Somewhat agree",
+            "neutral":"Neutral",
+            "lowneg":"Somewhat disagree",
+            "highneg":"Disagree"
+        }
     },
     "results":{
-    	"header":"placeholder",
-    	"preamble":"placeholder"
+        "header":"placeholder",
+        "preamble":"placeholder"
     },
     "languagesel":{
-    	"header":"Select your language"
+        "header":"Select your language"
     },
     "title":"SomeValues"
 }
