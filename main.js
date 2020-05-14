@@ -18,6 +18,26 @@ window.addEventListener('DOMContentLoaded', _ => {
   getCache('config.json', 'config', 'configCache')
 
   document.title = localisationCache.title
+
+  const fragment = new DocumentFragment()
+  const list = document.createElement('ul')
+
+  for (const lang of configCache.languages) {
+    const listitem = document.createElement('li')
+    const btn = document.createElement('a')
+    btn.setAttribute('class', 'linkbutton')
+    btn.setAttribute('href', 'quiz.html')
+    btn.onclick = _ => {
+      localStorage.setItem('lang', lang.lid)
+      cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
+    }
+    btn.innerText = lang.name
+    listitem.appendChild(btn)
+    list.appendChild(listitem)
+  }
+
+  fragment.appendChild(list)
+  document.getElementsByTagName('nav')[0].appendChild(fragment)
 })
 
 function getCache (location, storageKey, variableName) {

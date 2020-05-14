@@ -39,8 +39,5 @@
         "header":"placeholder",
         "preamble":"placeholder"
     },
-    "languagesel":{
-        "header":"Select your language"
-    },
     "title":"SomeValues"
 }

@@ -1,24 +1,103 @@
 		<main>
-			<h2 pid="languagesel.header"></h2>
-			<div id="languages">
-			</div>
+			<h1 pid="quiz.header"></h1>
+			<p pid="quiz.preamble"></p>
+			<button id="start" pid="quiz.start"></button>
 		</main>
 		<script>
-window.addEventListener('configLoad', _ => {
-  const fragment = new DocumentFragment()
+var chosenMultipliers = []
 
-  for (const lang of configCache.languages) {
-    const btn = document.createElement('a')
-    btn.setAttribute('class', 'linkbutton')
-    btn.onclick = async _ => {
-      localStorage.setItem('lang', lang.lid)
-      await cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
-      location.href = 'quiz.html'
-    }
-    btn.innerText = lang.name
-    fragment.appendChild(btn)
+function shuffleFY (originalArray) {
+  const array = originalArray.slice(0)
+
+  for (let i = (array.length - 1); i > 0; i -= 1) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]]
   }
 
-  document.getElementById('languages').appendChild(fragment)
-})
+  return array
+}
+
+function getResults () {
+  const url = new URL(configCache.hostname + 'results.html')
+  for (const spectrum of spectrumCache) {
+    const lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100)
+    url.searchParams.append(spectrum.spid, lvalPercent)
+  }
+  location.href = url
+}
+
+async function initPrompt () {
+  document.getElementById('back').disabled = !!(chosenMultipliers.length)
+
+  document.getElementById('prompt').innerText = localisationCache.prompts[promptCache[chosenMultipliers.length].qid]
+  document.getElementById('progress').innerText = Math.round(chosenMultipliers.length / promptCache.length * 100) + '%'
+}
+
+function nextPrompt (multiplier) {
+  for (const value of promptCache[chosenMultipliers.length].values) {
+    const valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid)
+    const result = multiplier * value.modifier
+    if (result < 0) { valSpectrum.lval += result * -1 } else { valSpectrum.rval += result }
+  }
+  if (chosenMultipliers.length + 1 == promptCache.length) {
+    getResults()
+    return
+  }
+  chosenMultipliers.push(multiplier)
+  initPrompt()
+}
+
+function prevPrompt () {
+  if (!chosenMultipliers.length) return
+  for (const value of promptCache[chosenMultipliers.length - 1].values) {
+    const valSpectrum = spectrumCache.find(spectrum => spectrum.spid == value.spid)
+    const result = chosenMultipliers[chosenMultipliers.length - 1] * value.modifier
+    if (result < 0) { valSpectrum.lval -= result * -1 } else { valSpectrum.rval -= result }
+  }
+  chosenMultipliers.pop()
+  initPrompt()
+}
+
+async function initLayout () {
+  document.getElementsByTagName('main')[0].innerText = ''
+
+  const fragment = new DocumentFragment()
+
+  const progress = document.createElement('h2')
+  progress.setAttribute('id', 'progress')
+  fragment.appendChild(progress)
+
+  const prompt = document.createElement('p')
+  prompt.setAttribute('id', 'prompt')
+  fragment.appendChild(prompt)
+
+  for (const opinion of configCache.opinions) {
+    const opbtn = document.createElement('button')
+    opbtn.innerText = localisationCache.quiz.opinions[opinion.id]
+    opbtn.setAttribute('id', opinion.id)
+    opbtn.addEventListener('click', _ => nextPrompt(opinion.multiplier))
+    fragment.appendChild(opbtn)
+  }
+
+  const backbtn = document.createElement('button')
+  backbtn.innerText = localisationCache.quiz.back
+  backbtn.setAttribute('id', 'back')
+  backbtn.addEventListener('click', _ => prevPrompt())
+  fragment.appendChild(backbtn)
+
+  document.getElementsByTagName('main')[0].appendChild(fragment)
+}
+
+document.getElementById('start').onclick = async _ => {
+  initLayout()
+
+  promptCache = shuffleFY(promptCache)
+
+  spectrumCache.map(spectrum => {
+    spectrum.lval = 0
+    spectrum.rval = 0
+  })
+
+  initPrompt()
+}
 		</script>
