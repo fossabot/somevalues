@@ -11,9 +11,16 @@
         "refo":"Reformism",
     },
     "prompts":[
-    	"placeholder",
-    	"placeholder1",
-    	"placeholder2"
+        "The Industrial Revolution and its consequences has been a disaster for the human race.",
+        "Technology should progress at any costs.",
+        "Automation is ultimately a bad thing.",
+        "Transhumanism will be beneficial to humanity.",
+        "Insurrection is needed to truly change society.",
+        "Revolution always end badly.",
+        "The system should be changed gradually instead of radically."
+        "Biology can mostly explain the social differences between men and women.",
+        "Gender is a social construct.",
+        "Science isn't absolute and is subject to change from society."
     ],
     "quiz":{
     	"header":"placeholder",
