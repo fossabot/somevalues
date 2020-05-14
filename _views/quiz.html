@@ -20,7 +20,7 @@ function shuffleFY (originalArray) {
 function getResults () {
   const url = new URL(configCache.hostname + 'results.html')
   for (const spectrum of spectrumCache) {
-    const lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100 * 10) / 10
+    const lvalPercent = Math.round(spectrum.lval / (spectrum.lval + spectrum.rval) * 100)
     url.searchParams.append(spectrum.spid, lvalPercent)
   }
   location.href = url
