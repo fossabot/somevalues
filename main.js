@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', _ => {
     const listitem = document.createElement('li')
     const btn = document.createElement('a')
     btn.setAttribute('class', 'linkbutton')
-    btn.setAttribute('href', 'quiz.html')
+    btn.setAttribute('href', location.href)
     btn.onclick = _ => {
       localStorage.setItem('lang', lang.lid)
       cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
