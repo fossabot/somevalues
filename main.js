@@ -26,10 +26,10 @@ window.addEventListener('DOMContentLoaded', _ => {
     const listitem = document.createElement('li')
     const btn = document.createElement('a')
     btn.setAttribute('class', 'linkbutton')
-    btn.setAttribute('href', location.href)
-    btn.onclick = _ => {
+    btn.onclick = async _ => {
       localStorage.setItem('lang', lang.lid)
-      cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
+      await cacheFile(`localisation/${lang.lid}.json`, 'localisation', 'localisationCache')
+      location.reload()
     }
     btn.innerText = lang.name
     listitem.appendChild(btn)
