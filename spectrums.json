@@ -1,82 +1,17 @@
 [
-	{
-		"spid": "social",
-		"left": "progre",
-		"right": "conser"
-	},
-	{
-		"spid": "identi",
-		"left": "constr",
-		"right": "essent"
-	},
-	{
-		"spid": "justic",
-		"left": "rehabi",
-		"right": "puniti"
-	},
-	{
-		"spid": "ethnos",
-		"left": "ethcen",
-		"right": "ethrel"
-	},
-	{
-		"spid": "autlib",
-		"left": "libert",
-		"right": "author"
-	},
-	{
-		"spid": "intern",
-		"left": "multil",
-		"right": "unilat"
-	},
-	{
-		"spid": "interv",
-		"left": "nonint",
-		"right": "yesint"
-	},
-	{
-		"spid": "inttra",
-		"left": "freetr",
-		"right": "protec"
-	},
-	{
-		"spid": "owners",
-		"left": "public",
-		"right": "privat"
-	},
-	{
-		"spid": "ecintc",
-		"left": "regula",
-		"right": "laifai"
-	},
-	{
-		"spid": "stmili",
-		"left": "pacifi",
-		"right": "milita"
-	},
-	{
-		"spid": "relath",
-		"left": "atheis",
-		"right": "religi"
-	},
-	{
-		"spid": "govint",
-		"left": "decent",
-		"right": "centra"
-	},
-	{
-		"spid": "change",
-		"left": "revolu",
-		"right": "reform"
-	},
-	{
-		"spid": "teclud",
-		"left": "techno",
-		"right": "luddis"
-	},
-	{
-		"spid": "enviro",
-		"left": "ecolog",
-		"right": "anthro"
-	}
+    {
+        "spid": "tech",
+        "left": "ludd",
+        "right": "phil"
+    },
+    {
+        "spid": "epis",
+        "left": "cons",
+        "right": "essn"
+    },
+    {
+        "spid": "chan",
+        "left": "revo",
+        "right": "refo"
+    }
 ]

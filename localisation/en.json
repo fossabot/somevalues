@@ -1,78 +1,39 @@
 {
-	"spectrums":{
-		"socialdesc":"placeholder",
-		"progre":"Progressivism",
-		"conser":"Conservatism",
-		"identidesc":"placeholder",
-		"constr":"Constructivism",
-		"essent":"Essenstialism",
-		"justicdesc":"placeholder",
-		"rehabi":"Rehabilitative",
-		"puniti":"Punitive",
-		"ethnosdesc":"placeholder",
-		"ethcen":"Ethnocentrism",
-		"ethrel":"Ethnorelativism",
-		"autlibdesc":"placeholder",
-		"author":"Authority",
-		"libert":"Liberty",
-		"interndesc":"placeholder",
-		"multil":"Multilateralism",
-		"unilat":"Unilateralism",
-		"intervdesc":"placeholder",
-		"nonint":"Non-Interventionism",
-		"yesint":"Interventionism",
-		"inttradesc":"placeholder",
-		"freetr":"Free trade",
-		"protec":"Protectionism",
-		"ownersdesc":"placeholder",
-		"public":"Public ownership",
-		"privat":"Private ownership",
-		"ecintcdesc":"placeholder",
-		"regula":"Regulation",
-		"laifai":"Laissez-faire",
-		"stmilidesc":"placeholder",
-		"milita":"Militarism",
-		"pacifi":"Pacifism",
-		"relath":"placeholder",
-		"atheis":"Atheism",
-		"religi":"Religious",
-		"govint":"placeholder",
-		"centra":"Central",
-		"decent":"Decentral",
-		"changedesc":"placeholder",
-		"revolu":"Revolution",
-		"reform":"Reform",
-		"tecluddesc":"placeholder",
-		"techno":"Technophilia",
-		"luddis":"Neo-Luddism",
-		"envirodesc":"placeholder",
-		"anthro":"Anthropocentrism",
-		"ecolog":"Ecology"
-	},
-	"prompts":[
-		"placeholder",
-		"placeholder1",
-		"placeholder2"
-	],
-	"quiz":{
-		"header":"placeholder",
-		"preamble":"placeholder",
-		"start":"Start",
-		"back":"Back",
-		"opinions":{
-			"highpos":"Agree",
-			"lowpos":"Somewhat agree",
-			"neutral":"Neutral",
-			"lowneg":"Somewhat disagree",
-			"highneg":"Disagree"
-		}
-	},
-	"results":{
-		"header":"placeholder",
-		"preamble":"placeholder"
-	},
-	"languagesel":{
-		"header":"Select your language"
-	},
-	"title":"The Political Hexedekeract"
+    "spectrums":{
+        "tech":"placeholder",
+        "ludd":"Luddism",
+        "phil":"Technophilia",
+        "epis":"placeholder",
+        "cons":"Constructivism",
+        "esse":"Essentialism",
+        "chan":"placeholder",
+        "revo":"Revolutionary",
+        "refo":"Reformism",
+    },
+    "prompts":[
+    	"placeholder",
+    	"placeholder1",
+    	"placeholder2"
+    ],
+    "quiz":{
+    	"header":"placeholder",
+    	"preamble":"placeholder",
+    	"start":"Start",
+    	"back":"Back",
+    	"opinions":{
+    	    "highpos":"Agree",
+    	    "lowpos":"Somewhat agree",
+    	    "neutral":"Neutral",
+    	    "lowneg":"Somewhat disagree",
+    	    "highneg":"Disagree"
+    	}
+    },
+    "results":{
+    	"header":"placeholder",
+    	"preamble":"placeholder"
+    },
+    "languagesel":{
+    	"header":"Select your language"
+    },
+    "title":"SomeValues"
 }
