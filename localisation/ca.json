@@ -20,8 +20,8 @@
         "La ciènca no és absoluta i està sotmesa a canvis de la societat."
     ],
     "quiz":{
-        "header":"posseïdor",
-        "preamble":"posseïdor",
+        "header":"Una petita prova \"política\"",
+        "preamble":"SomeValues ​​és un test polític que dóna puntuacions sobre 3 espectres basats en acords i desacords sobre declaracions.",
         "start":"Començar",
         "back":"Tornar d'inici",
         "opinions":{
@@ -33,7 +33,7 @@
         }
     },
     "results":{
-        "header":"posseïdor",
+        "header":"Resultats"
     },
     "title":"SomeValues"
 }

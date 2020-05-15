@@ -1,8 +1,8 @@
 		<main>
 			<h2 pid="results.header"></h2>
-			<p pid="results.preamble"></p>
 			<div id="spectrums">
 			</div>
+			<button id="back" pid="quiz.back"></button>
 		</main>
 		<script>
 async function initLayout () {
@@ -52,4 +52,6 @@ async function initLayout () {
 }
 
 window.addEventListener('configLoad', _ => initLayout())
+
+document.getElementById('back').onclick = _ => location.href = configCache.hostname
 		</script>

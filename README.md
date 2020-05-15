@@ -1,5 +1,4 @@
 # SomeValues
-[![Discord Chat](https://img.shields.io/discord/697903296396132474.svg)](https://discord.gg/ZCbGYGF)
 [![GitHub Actions](https://github.com/deekts/political-hexedekeract/workflows/Build%20pages/badge.svg)](https://github.com/deekts/political-hexedekeract/actions)
 [![License](https://img.shields.io/github/license/deekts/political-hexedekeract)](LICENSE)
 [![StandardJS](https://img.shields.io/badge/code_style-standard-brightgreen)](https://standardjs.com/)
