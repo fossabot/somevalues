@@ -21,9 +21,9 @@
     ],
     "quiz":{
         "header":"Una petita prova \"política\"",
-        "preamble":"SomeValues ​​és un test polític que dóna puntuacions sobre 3 espectres basats en acords i desacords sobre declaracions.",
+        "preamble":"SomeValues​és un test polític que dóna puntuacions sobre 3 espectres basats en acords i desacords sobre declaracions.",
         "start":"Començar",
-        "back":"Tornar d'inici",
+        "back":"Tornar",
         "opinions":{
             "highpos":"Completament d'acord",
             "lowpos":"Una mica d'acord",
