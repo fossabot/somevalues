@@ -39,6 +39,10 @@ button {
 	width: 100%;
 }
 
+button:disabled {
+	color: #999;
+}
+
 li {
 	list-style: none;
 	padding-left: 0.5rem;
@@ -64,7 +68,7 @@ a:hover {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.25rem;
+	padding: 0.25rem 0;
 }
 
 .bar > * {
@@ -74,11 +78,13 @@ a:hover {
 }
 .lbar {
 	text-align: right;
+	border-radius: 1rem 0 0 1rem;
 }
 
 .rbar {
 	background: #000;
 	color: #FFF;
+	border-radius: 0 1rem 1rem 0;
 }
 
 #spectrums > .axis:nth-child(even) > .bar > .lbar {
