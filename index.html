@@ -38,7 +38,7 @@ function getResults () {
 }
 
 async function initPrompt () {
-  document.getElementById('back').disabled = !!(chosenMultipliers.length)
+  document.getElementById('back').disabled = !(!!(chosenMultipliers.length))
 
   document.getElementById('prompt').innerText = localisationCache.prompts[promptCache[chosenMultipliers.length].qid]
   document.getElementById('progress').innerText = Math.round(chosenMultipliers.length / promptCache.length * 100) + '%'
