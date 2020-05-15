@@ -1,0 +1,76 @@
+html {
+	font: 18px/1.4 sans-serif;
+}
+
+body {
+	padding: 2rem;
+	margin: 0 auto;
+	max-width: 40rem;
+}
+
+footer {
+	text-align: right;
+}
+
+h1, h2, p, ul {
+	padding: 0;
+	margin: 0.25rem 0;
+}
+
+button {
+	outline: none;
+	border: none;
+	border-radius: 1rem;
+	padding: 0.25rem;
+	background: #EEE;
+	display: block;
+	margin: 0.5rem;
+	font-size: inherit;
+	width: 100%;
+}
+
+li {
+	list-style: none;
+	padding-left: 0.5rem;
+}
+
+a {
+	color: #069;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.axis {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.25rem;
+}
+
+.axis > * {
+	display: inline-block;
+}
+
+.lbar, .rbar {
+	padding: 0.25rem;
+	border: 1px #000 solid;
+}
+
+.rbar {
+	background: #000;
+	color: #FFF;
+}
+
+#spectrums > .axis:nth-child(even) > .lbar {
+	background: #000;
+	color: #FFF;
+}
+
+#spectrums > .axis:nth-child(even) > .rbar {
+	background: inherit;
+	color: inherit;
+}

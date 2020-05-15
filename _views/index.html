@@ -1,5 +1,5 @@
 		<main>
-			<h1 pid="quiz.header"></h1>
+			<h2 pid="quiz.header"></h2>
 			<p pid="quiz.preamble"></p>
 			<button id="start" pid="quiz.start"></button>
 		</main>
@@ -63,7 +63,7 @@ async function initLayout () {
 
   const fragment = new DocumentFragment()
 
-  const progress = document.createElement('h2')
+  const progress = document.createElement('p')
   progress.setAttribute('id', 'progress')
   fragment.appendChild(progress)
 

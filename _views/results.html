@@ -19,14 +19,14 @@ async function initLayout () {
     limg.setAttribute('class', 'img')
 
     var lbar = document.createElement('div')
-    lbar.setAttribute('width', lval)
+    lbar.setAttribute('style', `width: ${lval}%;`)
     lbar.setAttribute('class', 'lbar')
-    lbar.innerText = lval
+    lbar.innerText = `${lval}%`
 
     var rbar = document.createElement('div')
-    rbar.setAttribute('width', 100 - lval)
+    rbar.setAttribute('style', `width: ${100 - lval}%;`)
     rbar.setAttribute('class', 'rbar')
-    rbar.innerText = 100 - lval
+    rbar.innerText = `${100 - lval}%`
 
     var rimg = document.createElement('img')
     rimg.setAttribute('src', `${configCache.hostname}images/${paramSpectrum.right}.png`)
