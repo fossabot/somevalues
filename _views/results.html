@@ -14,9 +14,17 @@ async function initLayout () {
     var axis = document.createElement('div')
     axis.setAttribute('class', 'axis')
 
-    var limg = document.createElement('img')
-    limg.setAttribute('src', `${configCache.hostname}images/${paramSpectrum.left}.png`)
-    limg.setAttribute('class', 'img')
+    var labels = document.createElement('div')
+    labels.setAttribute('class', 'labels')
+
+    var llabel = document.createElement('h3')
+    llabel.innerText = localisationCache.spectrums[paramSpectrum.left]
+
+    var rlabel = document.createElement('h3')
+    rlabel.innerText = localisationCache.spectrums[paramSpectrum.right]
+
+    var bar = document.createElement('div')
+    bar.setAttribute('class', 'bar')
 
     var lbar = document.createElement('div')
     lbar.setAttribute('style', `width: ${lval}%;`)
@@ -28,14 +36,14 @@ async function initLayout () {
     rbar.setAttribute('class', 'rbar')
     rbar.innerText = `${100 - lval}%`
 
-    var rimg = document.createElement('img')
-    rimg.setAttribute('src', `${configCache.hostname}images/${paramSpectrum.right}.png`)
-    rimg.setAttribute('class', 'img')
+    bar.appendChild(lbar)
+    bar.appendChild(rbar)
 
-    axis.appendChild(limg)
-    axis.appendChild(lbar)
-    axis.appendChild(rbar)
-    axis.appendChild(rimg)
+    labels.appendChild(llabel)
+    labels.appendChild(rlabel)
+
+    axis.appendChild(labels)
+    axis.appendChild(bar)
 
     fragment.appendChild(axis)
   })

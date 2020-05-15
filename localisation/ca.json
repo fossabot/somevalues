@@ -1,12 +1,9 @@
 {
     "spectrums":{
-        "tech":"posseïdor",
         "ludd":"Ludisme",
         "phil":"Tecnofília",
-        "epis":"posseïdor",
         "cons":"Constructivisme",
         "esse":"Essencialisme",
-        "chan":"posseïdor",
         "revo":"Revolucionari",
         "refo":"Reformisme"
     },
@@ -37,7 +34,6 @@
     },
     "results":{
         "header":"posseïdor",
-        "preamble":"posseïdor"
     },
     "title":"SomeValues"
 }

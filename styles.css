@@ -12,7 +12,7 @@ footer {
 	text-align: right;
 }
 
-h1, h2, p, ul {
+h1, h2, h3, p, ul {
 	padding: 0;
 	margin: 0.25rem 0;
 }
@@ -44,20 +44,25 @@ a:hover {
 	text-decoration: underline;
 }
 
-.axis {
+.labels {
+	display: flex;
+	justify-content: space-between;
+}
+
+.bar {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 0.25rem;
 }
 
-.axis > * {
+.bar > * {
 	display: inline-block;
-}
-
-.lbar, .rbar {
 	padding: 0.25rem;
 	border: 1px #000 solid;
+}
+.lbar {
+	text-align: right;
 }
 
 .rbar {
@@ -65,12 +70,12 @@ a:hover {
 	color: #FFF;
 }
 
-#spectrums > .axis:nth-child(even) > .lbar {
+#spectrums > .axis:nth-child(even) > .bar > .lbar {
 	background: #000;
 	color: #FFF;
 }
 
-#spectrums > .axis:nth-child(even) > .rbar {
+#spectrums > .axis:nth-child(even) > .bar > .rbar {
 	background: inherit;
 	color: inherit;
 }

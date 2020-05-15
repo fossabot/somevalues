@@ -1,12 +1,9 @@
 {
     "spectrums":{
-        "tech":"placeholder",
         "ludd":"Luddism",
         "phil":"Technophilia",
-        "epis":"placeholder",
         "cons":"Constructivism",
         "esse":"Essentialism",
-        "chan":"placeholder",
         "revo":"Revolutionary",
         "refo":"Reformism"
     },
@@ -23,8 +20,8 @@
         "Science isn't absolute and is subject to change from society."
     ],
     "quiz":{
-        "header":"placeholder",
-        "preamble":"placeholder",
+        "header":"A small \"political\" quiz",
+        "preamble":"SomeValues is a political quiz that gives scores on 3 spectrums based on agreements and disagreements with statements.",
         "start":"Start",
         "back":"Back",
         "opinions":{
@@ -36,8 +33,7 @@
         }
     },
     "results":{
-        "header":"placeholder",
-        "preamble":"placeholder"
+        "header":"Results"
     },
     "title":"SomeValues"
 }
