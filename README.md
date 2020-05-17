@@ -1,6 +1,6 @@
 # SomeValues
-[![GitHub Actions](https://github.com/deekts/political-hexedekeract/workflows/Build%20pages/badge.svg)](https://github.com/deekts/political-hexedekeract/actions)
-[![License](https://img.shields.io/github/license/deekts/political-hexedekeract)](LICENSE)
+[![GitHub Actions](https://github.com/deekts/somevalues/workflows/Build%20pages/badge.svg)](https://github.com/deekts/political-hexedekeract/actions)
+[![License](https://img.shields.io/github/license/deekts/somevalues)](LICENSE)
 [![StandardJS](https://img.shields.io/badge/code_style-standard-brightgreen)](https://standardjs.com/)
 
 SomeValues is a quiz that gives scores on 3 spectrums based on agreements and disagreements with statements.
