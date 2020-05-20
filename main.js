@@ -11,11 +11,11 @@ window.addEventListener('localisationLoad', _ => {
   }
 })
 
-window.addEventListener('DOMContentLoaded', _ => {
-  getCache(`localisation/${language}.json`, 'localisation', 'localisationCache')
-  getCache('spectrums.json', 'spectrums', 'spectrumCache')
-  getCache('prompts.json', 'prompts', 'promptCache')
-  getCache('config.json', 'config', 'configCache')
+window.addEventListener('DOMContentLoaded', async _ => {
+  await getCache(`localisation/${language}.json`, 'localisation', 'localisationCache')
+  await getCache('spectrums.json', 'spectrums', 'spectrumCache')
+  await getCache('prompts.json', 'prompts', 'promptCache')
+  await getCache('config.json', 'config', 'configCache')
 
   document.title = localisationCache.title
 
